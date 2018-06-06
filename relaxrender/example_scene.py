@@ -1,4 +1,5 @@
 import numpy as np
+import relaxrender.utah_teapot.teapot_data as teapot
 
 from .scene import Scene
 from .camera import PerspectiveCamera
@@ -90,6 +91,8 @@ def make_cornell_box():
     tex_pos.append(None)
     tex_pos.append(None)
     
+    # teapot
+    # todo
 
     mesh = Mesh(tris, texs, tex_pos)
     
