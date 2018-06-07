@@ -5,6 +5,7 @@ import numpy as np
 
 from .points import Point3D, Vector
 from .triangle import Triangle, Triangles
+from .context import Context
 
 __all__ = ['PerspectiveCamera', 'OrthogonalCamera']
 
@@ -55,13 +56,25 @@ class PerspectiveCamera(CameraBase):
         self.h_angle = h_angle
         self.v_angle = v_angle
 
+    # 静态变量 index 用于计数
+    index = 0
+    context = Context()
+    width = context.output_width + 1
+    height = context.output_height + 1
+
     def sample_vector(self, size=1):
+        self.index += 1
+        self.index %= self.width*self.height
+        y = (self.index//self.width-self.height//2-1)/self.height
+        x = (self.index-y*self.width-self.width//2-1)/self.width
         samples = []
         xy = []
         for i in range(size):
+            """
             input_x = np.random.random()*2 - 1
             input_y = np.random.random()*2 - 1
-
+            """
+            input_x, input_y = x, y
             real_x = np.tan(self.h_angle/2)*input_x
             real_y = np.tan(self.v_angle/2)*input_y
 

@@ -107,7 +107,7 @@ class Triangles:
         self.cindex += 1
 
         if self.memory_size == self.cindex:
-            self.data = concatenate((self.data,
+            self.data = np.concatenate((self.data,
                                      np.empty((Points.chunk_size, Points.data_width))),
                                     axis=0)
             self.memory_size += Triangles.chunk_size

@@ -36,7 +36,11 @@ class SimpleReverseRayCasting(RayCasting):
         for index in range(self.context.raycasting_iteration):
             if index % 1000 == 0:
                 print("working on ray: {}.".format(index))
-            
+
+            """
+            ray_samples, xy = camera.sample_vector()
+            这一步在观察面上随机生成点的坐标, 改为生成确定的 601x801 个点的坐标
+            """
             ray_samples, xy = camera.sample_vector()
             start_vector = ray_samples[0]
             input_xy[index, :] = xy[0]

@@ -92,6 +92,27 @@ def make_cornell_box():
     tex_pos.append(None)
     
     # teapot
+    """
+    对每一部分的所有点进行3层遍历, 将所有的三角形组合加入到 tris 中
+    """
+    points = teapot.t_pos
+    for point in points:
+        point = [x/4 for x in point]
+        point.reverse()
+    for piece in teapot.t_patch:
+        length = len(piece)
+        for i in range(length):
+            for j in range(length):
+                if i >= j:
+                    continue
+                for k in range(length):
+                    if i >= k or j >= k:
+                        continue
+                    tris.append_tri(points[i], points[j], points[k])
+                    # 茶壶取白色
+                    texs.append(UniformReflection(White))
+
+                    tex_pos.append(None)
     # todo
 
     mesh = Mesh(tris, texs, tex_pos)

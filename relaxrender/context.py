@@ -18,12 +18,16 @@ class Context:
         self.y_range = (-1.0, 1.0)
         self.z_range = (-1.0, 1.0)
 
-        self.raycasting_iteration = int(1e6)
-
         self.writer_output_device = 'jpg'
         self.writer_color_mode = 'RGB'
         self.output_height = 600
         self.output_width = 800
+
+        """
+        self.raycasting_iteration = int(1e6)
+        修改为 601x801
+        """
+        self.raycasting_iteration = int((self.output_width+1)*(self.output_height+1))
 
     def integration_test(self):
         if self.color_mode not in Color.supported_color_space.keys():
