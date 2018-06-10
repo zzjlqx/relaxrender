@@ -112,9 +112,10 @@ class Point3D_store:
         self.cindex += 1
 
         if self.size == self.cindex:
-            # tmp = np.empty((Points.chunk_size, Points.data_width))
+            tmp = np.empty((Points.chunk_size, Points.data_width))
             self.data = np.concatenate((self.data,
-                                        np.empty((Points.chunk_size, Points.data_width))),
+                                        np.empty((Point3D_store.chunk_size, Point3D.data_width))),
+                                       # Points.data_width))),
                                        axis=0)
             self.size += Points.chunk_size
         

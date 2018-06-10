@@ -65,8 +65,9 @@ class PerspectiveCamera(CameraBase):
     def sample_vector(self, size=1):
         self.index += 1
         self.index %= self.width*self.height
-        y = (self.index//self.width-self.height//2-1)/self.height
-        x = (self.index-y*self.width-self.width//2-1)/self.width
+        h_width, h_height = self.width//2, self.height//2
+        y = (self.index//self.width-h_height)/h_height
+        x = (self.index % self.width-h_width-1)/h_width
         samples = []
         xy = []
         for i in range(size):
