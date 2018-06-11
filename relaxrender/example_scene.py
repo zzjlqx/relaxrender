@@ -94,7 +94,7 @@ def make_cornell_box():
     # teapot
     """
     1.0 (共5041个, 待改正) 对每一部分的所有点进行3层遍历, 将所有的三角形组合加入到 tris 中
-    2.0 
+    2.0 16patch数据每4个是一个四边形, 一组取四个分别添加
     """
 
     def mapping(point):
@@ -109,28 +109,21 @@ def make_cornell_box():
     tmp = 1
     for piece in teapot.t_patch:
         length = len(piece)
-        for i in range(length):
-            for j in range(length):
-                if i >= j:
+        for i in range(length // 4):
+            p1, p2, p3, p4 = [points[piece[i * 4]], points[piece[i * 4 + 1]], points[piece[i * 4 + 2]], points[
+                piece[i * 4 + 3]]]
+            for tri in [[p1, p2, p3], [p1, p4, p3]]:
+                p1, p2, p3 = tri[0], tri[1], tri[2]
+                if (p1 is p2) or (p2 is p3) or (p1 is p3):
                     continue
-                for k in range(length):
-                    if i >= k or j >= k:
-                        continue
-                    p1, p2, p3 = points[piece[i]], points[piece[j]], points[piece[k]]
-                    if (p1 is p2) or (p2 is p3) or (p1 is p3):
-                        continue
-                    if abs(p1[2]-p2[2]) >= 0.1 or abs(p2[2]-p3[2]) >= 0.1 or abs(p1[2]-p3[2]) >= 0.1 or \
-                            p1[0] == p2[0] or p1[1] == p2[1] or p1[2] == p2[2] or \
-                            p2[0] == p3[0] or p2[1] == p3[1] or p2[2] == p3[2] or \
-                            p1[0] == p3[0] or p1[1] == p3[1] or p1[2] == p3[2] :
-                        continue
-                    tmp += 1
+                if abs(p1[2] - p2[2]) >= 0.2 or abs(p2[2] - p3[2]) >= 0.2 or abs(p1[2] - p3[2]) >= 0.2 or \
+                        p1[0] == p2[0] == p3[0] or p1[1] == p2[1] == p3[1] or p1[2] == p2[2] == p3[2]:
+                    continue
+                tris.append_tri(p1, p2, p3)
+                # 茶壶取白色
+                texs.append(UniformReflection(White))
 
-                    tris.append_tri(points[piece[i]], points[piece[j]], points[piece[k]])
-                    # 茶壶取白色
-                    texs.append(UniformReflection(White))
-
-                    tex_pos.append(None)
+                tex_pos.append(None)
     # todo
 
     mesh = Mesh(tris, texs, tex_pos)
