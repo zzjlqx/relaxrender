@@ -27,22 +27,24 @@ class NormalizedWriter:
                             self.ctx.output_width,
                             3))
 
+        # input_xy = np.delete(input_xy, 0, 0)
         """
         将 601x801 个点的数据整合成 600x800
         """
         width, height = self.ctx.output_width, self.ctx.output_height
-        if input_xy.shape[0] == (height+1)*(width+1) and output_color.shape[0] == (height+1)*(width+1):
+        if xy_size == (height + 1) * (width + 1) and color_size == (height + 1) * (width + 1):
             index = int(0)
             for i in range(height):
                 for j in range(width):
                     index1, index2, index3 = index + 1, index + width + 1, index + width + 2
-                    output_color[index] = (output_color[index] + output_color[index1] + output_color[index2] +
-                                           output_color[index3]) / 4
+                    for k in range(len(output_color[index])):
+                        output_color[index][k] = (output_color[index][k] + output_color[index1][k] +
+                                                  output_color[index2][k] + output_color[index3][k]) / 4
                     index += 1
-                del input_xy[index]
-                del output_color[index]
-            del input_xy[index:]
-            del output_color[index:]
+                input_xy = np.delete(input_xy, index, 0)
+                output_color = np.delete(output_color, index, 0)
+            input_xy = input_xy[:index]
+            output_color = output_color[:index]
 
         posx = np.floor(input_xy[:, 0] * (self.ctx.output_width / 2) + self.ctx.output_width / 2)
         posy = np.floor(self.ctx.output_height / 2 - input_xy[:, 1] * (self.ctx.output_height / 2))
