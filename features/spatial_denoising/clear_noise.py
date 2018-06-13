@@ -101,8 +101,6 @@ class ClearNoise:
         image = Image.open("./test.jpeg").convert('L')
         img = Image.open("./原图.bmp").convert('L')
 
-        # m = [5, 10, 14]
-        # for i in range(2, 4):
         self.clearNoise_2(image, 3, 9)
 
         # 保存图片
