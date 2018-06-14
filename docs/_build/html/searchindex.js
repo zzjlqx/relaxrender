@@ -1,1 +1,0 @@
-Search.setIndex({docnames:["index","modules/points"],envversion:53,filenames:["index.rst","modules/points.rst"],objects:{},objnames:{},objtypes:{},terms:{The:0,code:0,extract:0,follow:0,from:0,index:0,modul:0,page:0,point:0,search:0},titles:["Welcome to relaxrender's documentation!","Points"],titleterms:{api:0,document:0,indic:0,point:1,refer:0,relaxrend:0,tabl:0,welcom:0}})
