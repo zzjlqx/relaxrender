@@ -97,13 +97,20 @@ class ClearNoise:
             return (p[m] + p[-m]) // 2
 
     def clear_noise(self):
+
         # 打开图片
         image = Image.open("./test.jpeg").convert('L')
         img = Image.open("./原图.bmp").convert('L')
 
+        # 采用中值去噪
         self.clearNoise_2(image, 3, 9)
 
         # 保存图片
         image.save("./处理结果.jpeg")
+        pix_1=image.load()
+        pix_2=img.load()
 
-        return (image,img)
+        image.close()
+        img.close()
+
+        return (pix_1, pix_2,image.size)
