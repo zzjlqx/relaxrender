@@ -1,6 +1,7 @@
 *.egg-info/
 *.make
 *_bin
+.idea/
 obj
 *~
 src/*~
