@@ -1,0 +1,5 @@
+{
+  "features/QMC/test_halftone.py::TestAdd::testhalftone": true,
+  "features/QMC/test_halftone.py::Testhalftone::testhalftone_failed": true,
+  "features/QMC/test_halftone.py::testhalftone": true
+}
