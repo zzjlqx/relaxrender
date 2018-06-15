@@ -1,12 +1,3 @@
 {
-  "tests/test_camera.py::TestCamera": true,
-  "tests/test_color.py::TestCamera": true,
-  "tests/test_context.py::TestContext": true,
-  "tests/test_math.py::TestMath": true,
-  "tests/test_points.py::TestPoints": true,
-  "tests/test_rasterization.py::TestRasterization": true,
-  "tests/test_relaxrender.py": true,
-  "tests/test_screenwriter.py::TestPoints": true,
-  "tests/test_texture.py::TestTexture": true,
-  "tests/test_triangles.py::TestTriangles": true
+  "tests/test_relaxrender.py": true
 }
