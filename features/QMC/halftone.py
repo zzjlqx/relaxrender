@@ -28,11 +28,11 @@ class Halftone:
             filename_add: output filename
         """
 
-        try:
-            im = Image.open(self.path)
-        except IOError:
-            print("Cannot open such image...")
-            raise
+        # try:
+        im = Image.open(self.path)
+        # except IOError:
+            # print("Cannot open such image...")
+            # raise
 
         if style == 'grayscale':
             angles = angles[:1]
@@ -140,11 +140,3 @@ class Halftone:
                 half_tone = half_tone.resize((int(w), int(h)), resample=Image.LANCZOS)
             dots.append(half_tone)
         return dots
-
-
-if __name__ == '__main__':
-    import sys
-
-    path = sys.argv[1]
-    h = Halftone(path)
-    h.make()

@@ -17,8 +17,6 @@
 这里暂时用`halftone.py`代替:
 >envs:  python3.6  pillow 5.00 : well tested
 
-1. 直接使用文件的用法示例:`py halftone.py ./src/e.jpg`
-2. 作为模块使用:
 ```py
 import halftone
 h = halftone.Halftone('/path/to/image.jpg')
@@ -45,6 +43,10 @@ h.make(
         and put in the K channel
     filename_add: output filename
 ```
+## 单元测试
+`pip install pytest-cov`
+`pytest --cov-report=html --cov=halftone`
+
 ## 效果图
 name|effect
 ---|---
