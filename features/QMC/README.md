@@ -57,3 +57,5 @@ Sample 20 |![](src/e_rough.jpg)
 Sample 2 |![](src/e_detail.jpg)
 Sample 2 antialias on |![](src/e_detail_an.jpg)
 grayscale |![](src/e_L.jpg)
+
+GCR 50% GCR 100% (Gray Component Replacement)
