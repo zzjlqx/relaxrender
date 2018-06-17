@@ -1,5 +1,4 @@
 # coding:utf-8
-import sys, os
 from PIL import Image, ImageDraw
 
 
@@ -7,7 +6,7 @@ class ClearNoise:
 
     # 判断噪点
     # 将灰度值与周围灰度值相似度较小的点认为是噪点
-    def clearNoise(self, img, radius, m,func):
+    def clearNoise(self, img, radius, m, func):
         pix = img.load()
         w, h = img.size
         w -= 1
@@ -65,6 +64,7 @@ class ClearNoise:
 
         p.sort()
         m = len(p) // 2
+        '''
         if m <= 0:
             px = x + radius
             py = y + radius
@@ -75,7 +75,8 @@ class ClearNoise:
 
             return pix[px, py]
         else:
-            return (p[m] + p[-m]) // 2
+        '''
+        return (p[m] + p[-m]) // 2
 
     def clear_noise_mid(self):
 
@@ -84,17 +85,17 @@ class ClearNoise:
         img = Image.open("./原图.bmp").convert('L')
 
         # 采用中值去噪
-        self.clearNoise(image, 3, 9,self.mid_of_rec)
+        self.clearNoise(image, 3, 9, self.mid_of_rec)
 
         # 保存图片
         image.save("./中值去噪.jpeg")
-        pix_1=image.load()
-        pix_2=img.load()
+        pix_1 = image.load()
+        pix_2 = img.load()
 
         image.close()
         img.close()
 
-        return (pix_1, pix_2,image.size)
+        return (pix_1, pix_2, image.size)
 
     def clear_noise_ave(self):
 
@@ -103,14 +104,14 @@ class ClearNoise:
         img = Image.open("./原图.bmp").convert('L')
 
         # 采用均值去噪
-        self.clearNoise(image, 3, 9,self.ave_of_rec)
+        self.clearNoise(image, 3, 9, self.ave_of_rec)
 
         # 保存图片
         image.save("./均值去噪.jpeg")
-        pix_1=image.load()
-        pix_2=img.load()
+        pix_1 = image.load()
+        pix_2 = img.load()
 
         image.close()
         img.close()
 
-        return (pix_1, pix_2,image.size)
+        return (pix_1, pix_2, image.size)
