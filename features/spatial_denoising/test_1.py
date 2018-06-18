@@ -36,5 +36,7 @@ class TestSpatialDenoising(unittest.TestCase):
 
         return tot / (w * h)
 
+'''
 if __name__ == '__main__':
     unittest.main()
+'''
