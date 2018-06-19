@@ -2,6 +2,7 @@ import numpy
 import cv2
 from scipy import ndimage
 
+'''采用高斯模糊的方法，通过高斯模糊矩阵对每个3*3的像素点进行卷积'''
 def blur(image, districts, scale):
 	if(len(image.shape)!=3):
 		print("error")
@@ -20,6 +21,7 @@ def gauss_blur(image, district, scale):
 		print("error district")
 		exit(1)
 	
+        #高斯模糊矩阵求每个像素矩阵的平均
 	gaussian = numpy.array([[1,2,1],
 							[2,4,2],
 							[1,2,1]]) * 1.0/16
@@ -49,6 +51,7 @@ def gauss_blur_version2(image, district, scale):
 		print("error district")
 		exit(1)
 	
+        #尝试修改高斯矩阵查看矩阵不同效果
 	gaussian = numpy.array([[1,2,1],
 							[2,100,2],
 							[1,2,1]]) * 1.0/112
