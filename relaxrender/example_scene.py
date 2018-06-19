@@ -160,7 +160,7 @@ def make_cornell_box():
         index += 1
     # todo
 
-    plt.show()
+    #plt.show()
     mesh = Mesh(tris, texs, tex_pos)
 
     c_pos = np.array([0.0, 0.0, 1.0])
