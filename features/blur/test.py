@@ -7,7 +7,7 @@ from blur import blur
 #这里首先读取实例图片，先对整张图片做blur，qa可直接运行查看，这里会出现两张图片，查看完后任意键进入下一段测试
 image = cv2.imread("test.jpg")
 
-new_image = blur_version2(image, [(0,0,image.shape[0],image.shape[1])], 10)
+new_image = blur(image, [(0,0,image.shape[0],image.shape[1])], 10)
 cv2.imshow("image", image)
 cv2.imshow("new", new_image)
 cv2.waitKey()
