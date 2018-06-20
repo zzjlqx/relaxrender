@@ -18,7 +18,7 @@ cv2.waitKey()
 
 
 
-"""
+
 image = cv2.imread("test.jpg")
 districts = [(800,1400,400,400)]
 new_image = blur(image, districts, 10)
@@ -57,4 +57,4 @@ for district in districts:
 	i += 1
 
 cv2.waitKey()
-"""
+
