@@ -4,6 +4,7 @@ import numpy as np
 from .points import Vector, Point3D, Point, Points
 from .color import Color
 from .math import dist, sphere_sampling, ray_in_triangle
+from features.stochastic_ray_tracing.render import get_shadow
 
 class RayCasting:
     def __init__(self, context):
@@ -40,7 +41,7 @@ class SimpleReverseRayCasting(RayCasting):
             ray_samples, xy = camera.sample_vector()
             start_vector = ray_samples[0]
             input_xy[index, :] = xy[0]
-            
+
             # every element of the history is a triple.
             # 1st element is the ray segment start point before the triangle.
             # 1st element is the ray segment end point on the triangle.
@@ -48,7 +49,7 @@ class SimpleReverseRayCasting(RayCasting):
             ray_history = []
 
             power = 1
-
+            
             res_vec, power = self.cast_ray(start_vector, ray_history, mesh, power)
             while res_vec is not None and res_vec.mode != 'place_holder' and power > 1e-3:
                 res_vec, power = self.cast_ray(res_vec, ray_history, mesh, power)
@@ -91,13 +92,23 @@ class SimpleReverseRayCasting(RayCasting):
             
 
     def forward_history(self, history, mesh):
+        if(len(history) > 0):
+            target_point = history[0][1]
+
         color = None
         while len(history) > 0:
             (p_start, p_end, tri) = history.pop()
             ttex = mesh.textures[tri]
             ttex_pos = mesh.texture_pos[tri]
             color = ttex.get_color(color, 0, 0, 0, 0, None, None)
-        return color
+        if color is None:
+            return color
+        else:
+            shadow = get_shadow(target_point, mesh)
+            return color*Color('RGB', shadow, shadow, shadow, 1)
+
+
+
 
             
         
