@@ -1,5 +1,5 @@
 import unittest
-from stochastic_ray_tracing.main import STRRelaxRender
+from features.stochastic_ray_tracing.main import STRRelaxRender
 
 class TestSTRRelaxRender(unittest.TestCase):
 

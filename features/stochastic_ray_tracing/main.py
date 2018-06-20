@@ -1,7 +1,7 @@
 import relaxrender.raycasting as raycasting
 import relaxrender.context as ctx
 import relaxrender.screenwriter as sw
-from stochastic_ray_tracing.render import make_shadow_cornell_box
+from features.stochastic_ray_tracing.render import make_shadow_cornell_box
 
 class STRRelaxRender():
 

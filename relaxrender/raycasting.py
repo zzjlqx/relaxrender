@@ -4,7 +4,7 @@ import numpy as np
 from .points import Vector, Point3D, Point, Points
 from .color import Color
 from .math import dist, sphere_sampling, ray_in_triangle
-from stochastic_ray_tracing.render import get_shadow
+from features.stochastic_ray_tracing.render import get_shadow
 
 class RayCasting:
     def __init__(self, context):

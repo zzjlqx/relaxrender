@@ -4,8 +4,8 @@ import numpy as np
 
 from relaxrender.color import Color, Red, White, Black, Green, Blue, Grey
 from relaxrender.texture import Texture, PlaneLightSource, UniformReflection
-from stochastic_ray_tracing.render import get_shadow
-from stochastic_ray_tracing.render import make_shadow_cornell_box
+from features.stochastic_ray_tracing.render import get_shadow
+from features.stochastic_ray_tracing.render import make_shadow_cornell_box
 import relaxrender.raycasting as raycasting
 import relaxrender.context as ctx
 import relaxrender.screenwriter as sw
