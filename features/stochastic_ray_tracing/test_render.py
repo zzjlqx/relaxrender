@@ -16,7 +16,7 @@ class TestRender(unittest.TestCase):
     def test_make_shadow_cornell_box(self):
         cornell_box = make_shadow_cornell_box()
 	
-	def test_get_shadow(self):
+    def test_get_shadow(self):
 
         scene = make_shadow_cornell_box()
         get_shadow(Point3D(0, 0, 0), scene.mesh)
