@@ -3,8 +3,8 @@
 #
 import numpy as np
 
-from features.utah_teapot.points import Point3D, Vector
-from features.utah_teapot.triangle import Triangle, Triangles
+from relaxrender.points import Point3D, Vector
+from relaxrender.triangle import Triangle, Triangles
 from features.utah_teapot.context import Context
 
 __all__ = ['PerspectiveCamera', 'OrthogonalCamera']

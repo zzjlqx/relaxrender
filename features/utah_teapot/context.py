@@ -1,6 +1,6 @@
 import numpy as np
 
-from features.utah_teapot.color import Color
+from relaxrender.color import Color
 
 class Context:
     output_device = ['jpg', 'mp4', 'screen']
@@ -27,7 +27,8 @@ class Context:
         self.raycasting_iteration = int(1e6)
         修改为 601x801
         """
-        self.raycasting_iteration = int((self.output_width+1)*(self.output_height+1))
+        # self.raycasting_iteration = int((self.output_width+1)*(self.output_height+1))
+        self.raycasting_iteration = 1
 
     def integration_test(self):
         if self.color_mode not in Color.supported_color_space.keys():

@@ -1,10 +1,10 @@
 
 
-from features.utah_teapot.points import Point3D, Point2D
-from features.utah_teapot.triangle import Triangle, Triangles
-from features.utah_teapot.mesh import Mesh
-from features.utah_teapot.texture import PlaneLightSource, BlackSink, ReflectionSurface, GlassSurface, SemiTransparent
-
+from relaxrender.points import Point3D, Point2D
+from relaxrender.triangle import Triangle, Triangles
+from relaxrender.mesh import Mesh
+from relaxrender.texture import PlaneLightSource, BlackSink, ReflectionSurface, GlassSurface, SemiTransparent
+"""
 __all__ = ['CenterSquareLight']
 
 class SolidCube(Mesh):
@@ -13,7 +13,7 @@ class SolidCube(Mesh):
         self.center = center
         self.half_size = half_size
 
-    
+
 
 class CenterSquareLight(Mesh):
     def __init__(self):
@@ -30,3 +30,4 @@ class CenterSquareLight(Mesh):
         tex_pos = [None, None]
         
         super().__init__(tris, texs, tex_pos)
+"""
