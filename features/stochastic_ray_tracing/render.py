@@ -165,3 +165,4 @@ def get_shadow(from_point, mesh):
     return ray_hit/ray_sum_sqrt**2
 
 
+
