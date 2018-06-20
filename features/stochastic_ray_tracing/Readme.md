@@ -10,3 +10,7 @@
 * 效果
 
     ![result](result.jpg)
+
+* 测试覆盖率
+
+    ![覆盖率](coverage.png)
