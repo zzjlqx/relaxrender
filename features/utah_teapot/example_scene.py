@@ -1,19 +1,19 @@
 import numpy as np
 import features.utah_teapot.teapot_data as teapot
 
-from .scene import Scene
-from .camera import PerspectiveCamera
-from .mesh import Mesh
-from .texture import Texture, PlaneLightSource, UniformReflection
-from .triangle import Triangles
-from .points import Point3D, Point2D
-from .triangle import Triangle, Triangles
-from .color import Color, Red, White, Black, Green, Blue, Grey
+from relaxrender.scene import Scene
+from features.utah_teapot.camera import PerspectiveCamera
+from relaxrender.mesh import Mesh
+from relaxrender.texture import Texture, PlaneLightSource, UniformReflection
+# from relaxrender.triangle import Triangles
+# from features.utah_teapot.points import Point3D, Point2D
+from relaxrender.triangle import Triangle, Triangles
+from relaxrender.color import Color, Red, White, Black, Green, Blue, Grey
 
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
+# import matplotlib.pyplot as plt
+# from mpl_toolkits.mplot3d import Axes3D
 
-__all__ = ['cornell_box']
+#__all__ = ['cornell_box']
 
 
 def make_cornell_box():
@@ -106,13 +106,13 @@ def make_cornell_box():
         point[1] = point[2]
         point[2] = -tmp - 1.5
         return point
-
+    """
     # 测试点集
     ax = Axes3D(plt.figure())
     ax.set_xlim([-1, 1])
     ax.set_ylim([-1, 1])
     ax.set_zlim([-2, 0])
-
+    """
     # test = mapping([1, -1, 1])
     points = teapot.t_pos
     # points = [mapping(p) for p in points]
@@ -144,13 +144,12 @@ def make_cornell_box():
                 p1, p2, p3 = tri[0], tri[1], tri[2]
 
                 # test
+                """
                 for p in tri:
                     ax.scatter(p[0], p[1], p[2], c=[1, 0, 0])
-
+                """
                 if (p1 is p2) or (p2 is p3) or (p1 is p3) or \
-                        (p1 == p2) or (p2 == p3) or (p1 == p3):
-                    continue
-                if p1[0] == p2[0] == p3[0] or p1[1] == p2[1] == p3[1] or p1[2] == p2[2] == p3[2]:
+                        (p1 == p2) or (p2 == p3) or (p1 == p3) or p1[0] == p2[0] == p3[0] or p1[1] == p2[1] == p3[1] or p1[2] == p2[2] == p3[2]:
                     continue
                 tris.append_tri(p1, p2, p3)
                 # 茶壶取白色
