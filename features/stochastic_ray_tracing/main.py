@@ -17,6 +17,6 @@ class STRRelaxRender():
         writer = sw.NormalizedWriter(myContext)
         writer.write(input_xy, output_color, 'output_test.jpg')
 
-if __name__ == "__main__":
-    test = STRRelaxRender()
-    test.render()
+# if __name__ == "__main__":
+#     test = STRRelaxRender()
+#     test.render()
