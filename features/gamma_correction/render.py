@@ -10,7 +10,7 @@ gamma 函数
 '''
 import numpy as np
 
-def gamma(img,gamma=2.2,funs=1,plot=0,save=0,saveFileName = 'gamma'):
+def gamma_correction(img,gamma=2.2,funs=1,plot=0,save=0,saveFileName = 'gamma'):
 	# 图片预处理
     xmax = img.max()
     x = img/img.max()
@@ -22,8 +22,6 @@ def gamma(img,gamma=2.2,funs=1,plot=0,save=0,saveFileName = 'gamma'):
         img_new = np.log(1+x)
     elif funs == 3:
         img_new = 2**x-1
-
-    # img_new = (img_new*255).astype(np.int32)
 
     # 是否绘图
     if plot:
@@ -39,20 +37,3 @@ def gamma(img,gamma=2.2,funs=1,plot=0,save=0,saveFileName = 'gamma'):
     return img_new
 
 
-# 用于测试
-'''
-def test():
-	# 测试显示一个伽马校正	
-	from skimage import data
-	import matplotlib.pyplot as plt  
-	img = data.coffee()
-	x = img/255
-	gamma = 2.2
-	img_new = x**gamma
-	plt.figure()  
-	ax1=plt.subplot(121)  
-	ax2=plt.subplot(122)  
-	ax1.imshow(x)  
-	ax2.imshow(img_new)  
-	plt.show()  
-'''

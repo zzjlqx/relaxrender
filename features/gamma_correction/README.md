@@ -1,31 +1,39 @@
-# 重要！
+# 项目Gamma_correction
 
-请务必在项目根目录运行下面几行代码 不然无法测试 ！！！！
+目录：
 
-**conda env create --file environment.yml**
+gamma_correction	---|--- README.md
 
-**activate relaxrender**
+​					    |--- render.py     #核心代码函数
 
-**conda install --file requirements.txt -y**
+​					    |--- test__render.py
 
-**pip install -e .**
-
-
-
----
-
-render.py 需要写不同的函数（也可以说是接口） 暴露提供给外部（test.py文件）调用
-
- 就像 relaxrender目录下PIONTS.py ...等的文件
+​					    |--- \_\_init\_\_.py
 
 
 
-test.py 如有不懂可参考tests目录下老师写的
+具体过程描述：
 
----
+- 读入图片rgb信息矩阵
+- 选择用哪个处理函数来进行伽马校正
+- 是否进行图片输出渲染
+- 是否输出文件
 
-测试时在gamma_correction目录下使用 pytest test.py 命令 目前还不知道参数的作用 你们可以先查
 
-整个项目的测试可以在整个项目根目录使用
 
-pytest --cov-report=html --cov=relaxrender --ignore=tests/test_relaxrender.py tests
+测试用例使用统一python skimage包中自带的图片作为测试用例
+
+- 用第一个处理函数 并 渲染 和输出文件
+- 用第二个处理函数
+- 用第三个处理函数
+
+
+
+说明：
+
+- 用pytest 测试时会渲染出结果图片 但会报精度下降的warning	
+- 覆盖率为100%
+
+
+- ![image](result.png)
+
