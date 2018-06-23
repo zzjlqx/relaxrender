@@ -1,5 +1,5 @@
 第27组motion blur
-
+这里要opencv3，具体安装见requirement
 
 覆盖率测试（注，需要先cd到blur文件夹下）
 pytest --cov-report=html test.py
