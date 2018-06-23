@@ -1,5 +1,4 @@
 import numpy
-import cv2
 from scipy import ndimage
 
 '''采用高斯模糊的方法，通过高斯模糊矩阵对每个3*3的像素点进行卷积'''
@@ -17,11 +16,12 @@ def blur(image, districts, scale):
 
 
 def gauss_blur(image, district, scale):
+	#判断输入区域是否有错
 	if(image.shape[0] < district[0] + district[2] or image.shape[1] < district[1] + district[3]):
 		print("error district")
 		exit(1)
 	
-        #高斯模糊矩阵求每个像素矩阵的平均
+    #高斯模糊矩阵求每个像素矩阵的加权平均
 	gaussian = numpy.array([[1,2,1],
 							[2,4,2],
 							[1,2,1]]) * 1.0/16
@@ -29,35 +29,6 @@ def gauss_blur(image, district, scale):
 	new_image = image.copy()
 	for r in range(scale):
 		for i in range(3):
-			new_image[district[0]:district[0]+district[2], district[1]:district[1]+district[3], i] = ndimage.convolve(new_image[district[0]:district[0]+district[2], district[1]:district[1]+district[3], i], gaussian)
-	return new_image
-	
-
-def blur_version2(image, districts, scale):
-	if(len(image.shape)!=3):
-		print("error")
-		exit(0)
-		
-	new_image = image.copy()
-	
-	for district in districts:
-		new_image = gauss_blur_version2(new_image, district, scale)
-		
-	return new_image
-
-
-def gauss_blur_version2(image, district, scale):
-	if(image.shape[0] < district[0] + district[2] or image.shape[1] < district[1] + district[3]):
-		print("error district")
-		exit(1)
-	
-        #尝试修改高斯矩阵查看矩阵不同效果
-	gaussian = numpy.array([[1,2,1],
-							[2,100,2],
-							[1,2,1]]) * 1.0/112
-	
-	new_image = image.copy()
-	for r in range(scale):
-		for i in range(3):
+			#对特定区域图像每个通道做高斯滤波
 			new_image[district[0]:district[0]+district[2], district[1]:district[1]+district[3], i] = ndimage.convolve(new_image[district[0]:district[0]+district[2], district[1]:district[1]+district[3], i], gaussian)
 	return new_image
