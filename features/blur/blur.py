@@ -3,9 +3,6 @@ from scipy import ndimage
 
 '''采用高斯模糊的方法，通过高斯模糊矩阵对每个3*3的像素点进行卷积'''
 def blur(image, districts, scale):
-	if(len(image.shape)!=3):
-		print("error")
-		exit(0)
 		
 	new_image = image.copy()
 	
@@ -16,10 +13,6 @@ def blur(image, districts, scale):
 
 
 def gauss_blur(image, district, scale):
-	#判断输入区域是否有错
-	if(image.shape[0] < district[0] + district[2] or image.shape[1] < district[1] + district[3]):
-		print("error district")
-		exit(1)
 	
     #高斯模糊矩阵求每个像素矩阵的加权平均
 	gaussian = numpy.array([[1,2,1],
