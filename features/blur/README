@@ -1,0 +1,10 @@
+第27组motion blur
+这里要opencv3，具体安装见requirement
+
+覆盖率测试（注，需要先cd到blur文件夹下）
+pytest --cov-report=html --cov=blur --ignore=blur.py test.py
+这里两个测试分别保存了两张图片：
+  after_blur_some_area_pic.jpg保存的是模糊科比的球衣号码的图片
+  after_blur_whole_pic.jpg保存的是模糊整张图片
+ 
+ test.jpg保存的是原图
